@@ -9,8 +9,7 @@
  - Retrofit
  - Dependency Injection(Koin)
 
- ![](art/exchange_list_page.jpg)
-
+[![exchange-list-page.jpg](https://i.postimg.cc/CK8TnPD4/exchange-list-page.jpg)](https://postimg.cc/1gyYLKvg)
 
 
  
