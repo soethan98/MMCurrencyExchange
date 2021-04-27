@@ -1,5 +1,10 @@
 # MMCurrencyExchange
 
-## Display exchange rate fetch from https://forex.cbm.gov.mm/api/
+ Display exchange rate fetch from https://forex.cbm.gov.mm/api/
+ 
+ # Components
+ - Android Architecture components(Room,livedata,viewmodel)
 
-![](art/exchange_list_page.png)
+
+
+ 
