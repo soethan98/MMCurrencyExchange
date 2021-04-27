@@ -1,0 +1,22 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation CommonLibs.kotlinStdLib
+
+    implementation Coroutines.coroutine_android
+    implementation Coroutines.coroutine_core
+    implementation Coroutines.coroutine_rx
+
+    implementation Koin.android
+//    implementation Koin.extension
+//    implementation Koin.viewmodel
+//    implementation Koin.fragment
+}

@@ -1,0 +1,79 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdkVersion BuildConfig.compileSdkVersion
+    buildToolsVersion BuildConfig.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.soethan.mmcurrencyexchange"
+        minSdkVersion BuildConfig.minSdkVersion
+        targetSdkVersion BuildConfig.targetSdkVersion
+        versionCode BuildConfig.versionCode
+        versionName BuildConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation project(':domain')
+    implementation project(':data')
+    implementation CommonLibs.kotlinStdLib
+    implementation AndroidX.core
+    implementation AndroidX.appcompat
+    implementation AndroidX.constraint_layout
+    implementation AndroidX.recycler_view
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation Material.material
+
+    implementation AndroidArchLifeCycle.viewmodel
+    implementation AndroidArchLifeCycle.liveData
+    kapt AndroidArchLifeCycle.compiler
+
+    implementation AndroidArchNavigation.fragment
+    implementation AndroidArchNavigation.ui
+
+    implementation Coroutines.coroutine_android
+    implementation Coroutines.coroutine_core
+    implementation Coroutines.coroutine_rx
+
+    implementation Koin.android
+    implementation Koin.extension
+    implementation Koin.viewmodel
+    implementation Koin.fragment
+    implementation Koin.scope
+
+
+    implementation CommonLibs.timber
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+}
