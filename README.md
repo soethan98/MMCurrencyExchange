@@ -8,6 +8,7 @@
  - Timber
  - Retrofit
  - Dependency Injection(Koin)
+ - Jetpack DataStore
 
 # Screenshots
 
