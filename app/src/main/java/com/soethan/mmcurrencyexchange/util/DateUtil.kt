@@ -9,7 +9,6 @@ object DateFormatter {
 
 
     fun format(time: Long): String {
-        Timber.i("Time %s",time)
         val cal = Calendar.getInstance()
         cal.timeInMillis = time * 1000L
         return formatter.format(cal.time).toString()

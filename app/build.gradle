@@ -74,6 +74,6 @@ dependencies {
 
     implementation CommonLibs.timber
 
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation Gson.core
 
 }

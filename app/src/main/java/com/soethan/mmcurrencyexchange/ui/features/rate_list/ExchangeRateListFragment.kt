@@ -1,10 +1,16 @@
 package com.soethan.mmcurrencyexchange.ui.features.rate_list
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.soethan.mmcurrencyexchange.R
 import com.soethan.mmcurrencyexchange.ui.base.BaseFragment
 import com.soethan.mmcurrencyexchange.databinding.FragmentExchangeRateListBinding
 import com.soethan.mmcurrencyexchange.util.Resource
@@ -21,11 +27,12 @@ class ExchangeRateListFragment constructor(private val viewModel: ExchangeRateVi
 
     private val TAG = "ExchangeRateListFragment"
 
-    private val exchangeRateAdapter:ExchangeRateAdapter by lazy { ExchangeRateAdapter{
-        requireContext().toast(it.countryName)
+    private val exchangeRateAdapter: ExchangeRateAdapter by lazy {
+        ExchangeRateAdapter {
+            requireContext().toast(it.countryName)
 
-    } }
-
+        }
+    }
 
     override fun getViewBinding(): FragmentExchangeRateListBinding {
         return FragmentExchangeRateListBinding.inflate(layoutInflater)
@@ -48,12 +55,12 @@ class ExchangeRateListFragment constructor(private val viewModel: ExchangeRateVi
     }
 
     private fun setSwipeRefreshListener() {
-        binding.swipeRefreshList.setOnRefreshListener {
-            binding.swipeRefreshList.isRefreshing = true
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.swipeRefreshLayout.isRefreshing = true
             viewModel.getExchangeRate(isForceRefresh = true)
             lifecycleScope.launch {
                 delay(4_000)
-                binding.swipeRefreshList.isRefreshing = false
+                binding.swipeRefreshLayout.isRefreshing = false
             }
         }
 
@@ -68,7 +75,8 @@ class ExchangeRateListFragment constructor(private val viewModel: ExchangeRateVi
                 is Resource.Content -> {
                     binding.progressExchangeList.hide()
                     Timber.i("$TAG %s", it.content)
-                    binding.itemUpdateTimeBanner.tvLastUpdateTime.text = "Last Update on - ${it.content.lastUpdateTime}"
+                    binding.itemUpdateTimeBanner.tvLastUpdateTime.text =
+                        "Last Update on - ${it.content.lastUpdateTime}"
                     exchangeRateAdapter.submitList(it.content.exchangeRateUiModel)
 
                 }
@@ -80,8 +88,22 @@ class ExchangeRateListFragment constructor(private val viewModel: ExchangeRateVi
 
             }
         })
-
     }
 
 
+    override fun setUpToolbar() {
+        setHasOptionsMenu(true)
+        (activity as? AppCompatActivity)?.setSupportActionBar(binding.toolbar)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.overflow_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_setting -> findNavController().navigate(R.id.settingsFragment)
+        }
+        return true
+    }
 }

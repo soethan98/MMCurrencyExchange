@@ -1,16 +1,23 @@
 package com.soethan.mmcurrencyexchange.util.extension
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
+import android.content.res.Configuration
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.soethan.mmcurrencyexchange.R
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.SendChannel
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.conflate
+import kotlinx.coroutines.runBlocking
 
 fun View.show(): View {
     if (visibility != View.VISIBLE) {
@@ -55,18 +62,6 @@ fun View.showSnackBar(
 
 }
 
-@ExperimentalCoroutinesApi
-fun <E> SendChannel<E>.safeOffer(value: E) = !isClosedForSend && try {
-    offer(value)
-} catch (e: CancellationException) {
-    false
-}
 
-@ExperimentalCoroutinesApi
-fun View.clicks() = callbackFlow<Unit> {
-    val listener = View.OnClickListener { safeOffer(Unit) }
-    setOnClickListener(listener)
-    awaitClose { setOnClickListener(null) }
-}.conflate()
 
 

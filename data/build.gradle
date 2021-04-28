@@ -64,11 +64,12 @@ dependencies {
     implementation Retrofit.gson_converter
     implementation OkHttp.client
     implementation OkHttp.logger
-//    implementation Moshi.core
-//    kapt Moshi.code_gen
 
     implementation CommonLibs.timber
     implementation Gson.core
+
+    implementation DataStore.android
+
 
 
 }

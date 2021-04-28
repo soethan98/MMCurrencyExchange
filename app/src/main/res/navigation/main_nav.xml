@@ -3,11 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/exchangeRateListFragment">
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
         android:id="@+id/exchangeRateListFragment"
         android:name="com.soethan.mmcurrencyexchange.ui.features.rate_list.ExchangeRateListFragment"
         android:label="Exchange Rates"
         tools:layout="@layout/fragment_exchange_rate_list" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.soethan.mmcurrencyexchange.ui.features.settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.soethan.mmcurrencyexchange.ui.features.splash.SplashScreenFragment"
+        android:label="SplashScreenFragment">
+        <action
+            android:id="@+id/toExchangeListFragment"
+            app:destination="@id/exchangeRateListFragment" />
+    </fragment>
 </navigation>
