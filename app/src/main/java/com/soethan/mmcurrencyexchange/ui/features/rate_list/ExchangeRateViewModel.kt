@@ -1,4 +1,4 @@
-package com.soethan.mmcurrencyexchange.ui.features.rate_list
+ package com.soethan.mmcurrencyexchange.ui.features.rate_list
 
 import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData

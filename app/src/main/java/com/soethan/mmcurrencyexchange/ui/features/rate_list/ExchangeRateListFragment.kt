@@ -102,7 +102,7 @@ class ExchangeRateListFragment constructor(private val viewModel: ExchangeRateVi
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_setting -> findNavController().navigate(R.id.settingsFragment)
+            R.id.action_setting -> findNavController().navigate(R.id.toSettingsFragment)
         }
         return true
     }

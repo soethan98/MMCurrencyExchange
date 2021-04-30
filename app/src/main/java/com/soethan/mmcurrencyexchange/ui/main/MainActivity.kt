@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.soethan.mmcurrencyexchange.R
 import com.soethan.mmcurrencyexchange.databinding.ActivityMainBinding
 import kotlinx.coroutines.runBlocking
@@ -27,8 +31,9 @@ class MainActivity : AppCompatActivity() {
         val view = mainBinding.root
         setContentView(view)
         observeData()
-
     }
+
+
 
 
     private fun observeData() {

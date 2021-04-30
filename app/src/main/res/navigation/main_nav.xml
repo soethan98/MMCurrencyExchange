@@ -9,7 +9,15 @@
         android:id="@+id/exchangeRateListFragment"
         android:name="com.soethan.mmcurrencyexchange.ui.features.rate_list.ExchangeRateListFragment"
         android:label="Exchange Rates"
-        tools:layout="@layout/fragment_exchange_rate_list" />
+        tools:layout="@layout/fragment_exchange_rate_list" >
+        <action
+            android:id="@+id/toSettingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
+    </fragment>
 
     <fragment
         android:id="@+id/settingsFragment"
