@@ -1,0 +1,9 @@
+android.applicationVariants.all { variant ->
+    def appName = "MMCurrencyExchange"
+    variant.outputs.all { output ->
+        def newApkName
+
+        newApkName = "${appName}_${variant.versionName}_${variant.buildType.name}.apk"
+        output.outputFileName = new File("./", newApkName)
+    }
+}

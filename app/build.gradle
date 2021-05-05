@@ -5,6 +5,9 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
 }
 
+apply from: "$project.rootDir/system/artifacts.gradle"
+
+
 android {
     compileSdkVersion BuildConfig.compileSdkVersion
     buildToolsVersion BuildConfig.buildToolsVersion
