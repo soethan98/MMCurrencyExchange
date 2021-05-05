@@ -1,16 +1,15 @@
 package com.soethan.data.repository
 
-import android.util.Log
 import com.soethan.data.local.ExchangeRateDatabase
-import com.soethan.data.model.RateDataModel
+import com.soethan.data.model.RateEntity
 
 class ExchangeLocalDataSourceImpl(private val exchangeRateDatabase: ExchangeRateDatabase) :
     ExchangeLocalDataSource {
-    override suspend fun saveRate(rates: List<RateDataModel>) {
+    override suspend fun saveRate(rates: List<RateEntity>) {
         exchangeRateDatabase.exchangeRateDao().insertAll(rates)
     }
 
-    override suspend fun getAllRatesFromDb(): List<RateDataModel> {
+    override suspend fun getAllRatesFromDb(): List<RateEntity> {
         return exchangeRateDatabase.exchangeRateDao().getAllExchangeRates()
     }
 
@@ -18,4 +17,8 @@ class ExchangeLocalDataSourceImpl(private val exchangeRateDatabase: ExchangeRate
     override suspend fun deleteAll() {
         exchangeRateDatabase.exchangeRateDao().deleteAll()
     }
+
+    override suspend fun getExchangeRate(id: Long) =
+        exchangeRateDatabase.exchangeRateDao().getExchangeRate(id)
+    
 }

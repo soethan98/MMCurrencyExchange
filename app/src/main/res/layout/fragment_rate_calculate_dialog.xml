@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_common">
+
+    <RelativeLayout
+        android:background="@drawable/background_layout"
+        android:padding="@dimen/padding_common"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tvLabelCurrency"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="USD" />
+
+        <EditText
+            android:gravity="end"
+            android:hint="1.0"
+            android:maxLength="10"
+            android:layout_centerVertical="true"
+            android:background="@drawable/background_editext"
+            android:textAppearance="?textAppearanceSubtitle2"
+            android:id="@+id/edtRate"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_small"
+            />
+
+    </RelativeLayout>
+    <ImageButton
+        android:layout_marginTop="@dimen/padding_common"
+        android:layout_marginBottom="@dimen/padding_common"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/background_reverse"
+        android:src="@drawable/ic_convert2"
+        android:tint="?colorOnSecondary"/>
+    <RelativeLayout
+        android:background="@drawable/background_layout"
+        android:padding="@dimen/padding_common"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tvLabelConvertedCurrency"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="USD" />
+        <TextView
+            android:layout_alignTop="@id/tvLabelConvertedCurrency"
+            android:layout_alignBottom="@id/tvLabelConvertedCurrency"
+            android:id="@+id/tvCalculatedRate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_marginStart="@dimen/padding_small"
+            android:textAppearance="?textAppearanceSubtitle1"
+            android:layout_toEndOf="@id/tvLabelConvertedCurrency"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

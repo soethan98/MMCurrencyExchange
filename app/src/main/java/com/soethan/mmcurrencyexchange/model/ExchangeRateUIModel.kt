@@ -7,7 +7,7 @@ data class ExchangeRateUiModel(
     override val id: Long,
     val rate: String,
     val code: String,
-    val countryName: String = "United States"
+    val countryName: String
 ) : BaseUiModel
 
 data class ExchangeUiModel(
@@ -17,7 +17,6 @@ data class ExchangeUiModel(
 
 
 data class CurrencyUiModel(
-    val aa: String,
     val currencies: Map<String, String>
 ) {
     fun getValue(key: String): String? {

@@ -1,4 +1,4 @@
-package com.soethan.data.model
+package com.soethan.data.network.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -8,12 +8,13 @@ data class CurrencyApiModel(
     @SerializedName("rates")
     val rates: Map<String, String>?
 ) {
-    fun getRates(): List<RateDataModel> {
+    fun getRates(): List<CurrencyApiItem> {
         return rates?.map {
-            RateDataModel(
+            CurrencyApiItem(
                 currencyCode = it.key,
-                rate = it.value
+                currencyRate = it.value
             )
         } ?: listOf()
     }
 }
+

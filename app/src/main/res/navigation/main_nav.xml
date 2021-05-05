@@ -17,6 +17,9 @@
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right"/>
+        <action
+            android:id="@+id/action_exchangeRateListFragment_to_rateCalculatorFragment2"
+            app:destination="@id/rateCalculatorFragment" />
     </fragment>
 
     <fragment
@@ -32,4 +35,13 @@
             android:id="@+id/toExchangeListFragment"
             app:destination="@id/exchangeRateListFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/rateCalculatorFragment"
+        android:name="com.soethan.mmcurrencyexchange.ui.features.ratecalculator.RateCalculatorFragment"
+        android:label="RateCalculatorFragment" >
+
+        <argument
+            android:name="id"
+            app:argType="long" />
+    </dialog>
 </navigation>

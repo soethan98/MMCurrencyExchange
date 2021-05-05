@@ -1,20 +1,21 @@
 package com.soethan.data.local
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.soethan.data.model.RateDataModel
-import retrofit2.http.DELETE
+import com.soethan.data.model.RateEntity
 
 @Dao
 interface ExchangeRateDao {
 
     @Query("SELECT * FROM rate_table")
-    suspend fun getAllExchangeRates(): List<RateDataModel>
+    suspend fun getAllExchangeRates(): List<RateEntity>
+
+    @Query("SELECT * FROM rate_table WHERE id=:id")
+    suspend fun getExchangeRate(id: Long): RateEntity
 
     @Insert
-    suspend fun insertAll(rates: List<RateDataModel>): List<Long>
+    suspend fun insertAll(rates: List<RateEntity>): List<Long>
 
     @Query("DELETE FROM rate_table")
     suspend fun deleteAll()

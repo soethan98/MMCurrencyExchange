@@ -8,6 +8,7 @@ import com.soethan.mmcurrencyexchange.model.CurrencyUiModel
 import com.soethan.mmcurrencyexchange.model.ExchangeRateUiModel
 import com.soethan.mmcurrencyexchange.model.ExchangeUiModel
 import com.soethan.mmcurrencyexchange.util.DateFormatter
+import com.soethan.mmcurrencyexchange.util.extension.formatString
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
@@ -26,7 +27,7 @@ class ExchangeRateUiModelMapper constructor(
                 exchangeRateUiModel = rateList.map { rateItem ->
                     ExchangeRateUiModel(
                         code = rateItem.currencyCode,
-                        rate = rateItem.exchangeRate,
+                        rate = rateItem.exchangeRate.formatString(),
                         id = rateItem.id,
                         countryName = currencyUiModel?.getValue(rateItem.currencyCode)
                             ?: "Unknown value"

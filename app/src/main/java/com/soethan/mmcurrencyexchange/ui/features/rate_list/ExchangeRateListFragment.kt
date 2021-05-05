@@ -29,8 +29,8 @@ class ExchangeRateListFragment constructor(private val viewModel: ExchangeRateVi
 
     private val exchangeRateAdapter: ExchangeRateAdapter by lazy {
         ExchangeRateAdapter {
-            requireContext().toast(it.countryName)
-
+            val action = ExchangeRateListFragmentDirections.actionExchangeRateListFragmentToRateCalculatorFragment2(it.id)
+            findNavController().navigate(action)
         }
     }
 

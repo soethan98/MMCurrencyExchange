@@ -9,7 +9,7 @@ import org.koin.dsl.module
 val DATA_MODULE = module {
     single { ConnectivityChecker(get()) }
     single<ExchangeRemoteDataSource> { ExchangeRemoteDataSourceImpl(get()) }
-    single<ExchangeRepo> { ExchangeRepoImpl(get(), get(), get(), get(), get()) }
+    single<ExchangeRepo> { ExchangeRepoImpl(get(), get(), get(), get(), get(), get()) }
     single<SettingRepo> { SettingRepoImpl(get()) }
     single<ExchangeLocalDataSource> { ExchangeLocalDataSourceImpl(get()) }
 }

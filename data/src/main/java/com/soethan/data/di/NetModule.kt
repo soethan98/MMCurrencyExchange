@@ -1,7 +1,6 @@
 package com.soethan.data.di
 
-import com.google.gson.Gson
-import com.soethan.data.service.ExchangeRateService
+import com.soethan.data.network.service.ExchangeRateService
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import okhttp3.OkHttpClient
