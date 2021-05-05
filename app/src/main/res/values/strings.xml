@@ -4,6 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="night_mode">Night mode</string>
     <string name="setting">Settings</string>
+    <string name="version_name">v %1$s</string>
+    <string name="last_updated_time">Last Updated at - %1$s</string>
 
 
 </resources>

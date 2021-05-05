@@ -1,10 +1,7 @@
 package com.soethan.mmcurrencyexchange.ui.features.rate_list
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -29,24 +26,28 @@ class ExchangeRateListFragment constructor(private val viewModel: ExchangeRateVi
 
     private val exchangeRateAdapter: ExchangeRateAdapter by lazy {
         ExchangeRateAdapter {
-            val action = ExchangeRateListFragmentDirections.actionExchangeRateListFragmentToRateCalculatorFragment2(it.id)
+            val action =
+                ExchangeRateListFragmentDirections.actionExchangeRateListFragmentToRateCalculatorFragment2(
+                    it.id
+                )
             findNavController().navigate(action)
         }
     }
 
-    override fun getViewBinding(): FragmentExchangeRateListBinding {
-        return FragmentExchangeRateListBinding.inflate(layoutInflater)
+    override fun setupViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentExchangeRateListBinding {
+        return FragmentExchangeRateListBinding.inflate(layoutInflater, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onViewCreated(savedInstanceState: Bundle?) {
+        super.onViewCreated(savedInstanceState)
         viewModel.getExchangeRate()
         setupRecyclerView()
         setSwipeRefreshListener()
         observeData()
-
     }
-
 
     private fun setupRecyclerView() {
         binding.rvExchangeList.layoutManager = LinearLayoutManager(requireContext())
@@ -76,7 +77,7 @@ class ExchangeRateListFragment constructor(private val viewModel: ExchangeRateVi
                     binding.progressExchangeList.hide()
                     Timber.i("$TAG %s", it.content)
                     binding.itemUpdateTimeBanner.tvLastUpdateTime.text =
-                        "Last Update on - ${it.content.lastUpdateTime}"
+                        getString(R.string.last_updated_time, it.content.lastUpdateTime)
                     exchangeRateAdapter.submitList(it.content.exchangeRateUiModel)
 
                 }

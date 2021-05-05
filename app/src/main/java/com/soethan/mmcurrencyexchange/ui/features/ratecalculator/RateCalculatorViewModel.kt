@@ -3,17 +3,13 @@ package com.soethan.mmcurrencyexchange.ui.features.ratecalculator
 import androidx.lifecycle.*
 import com.soethan.domain.usecase.GetExchangeRateItem
 import com.soethan.mmcurrencyexchange.model.RateCalculatorUiModel
-import com.soethan.mmcurrencyexchange.util.BaseViewModel
+import com.soethan.mmcurrencyexchange.ui.base.BaseViewModel
 import com.soethan.mmcurrencyexchange.util.ExchangeCalculator
-import com.soethan.mmcurrencyexchange.util.extension.getDecimalConvertedValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import timber.log.Timber
-import java.lang.Exception
-import java.math.BigDecimal
 
 @FlowPreview
 @ExperimentalCoroutinesApi

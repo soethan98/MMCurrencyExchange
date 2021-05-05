@@ -4,7 +4,6 @@ import com.soethan.mmcurrencyexchange.ui.features.rate_list.ExchangeRateViewMode
 import com.soethan.mmcurrencyexchange.ui.features.ratecalculator.RateCalculatorViewModel
 import com.soethan.mmcurrencyexchange.ui.features.settings.SettingsViewModel
 import com.soethan.mmcurrencyexchange.ui.main.MainViewModel
-import com.soethan.mmcurrencyexchange.util.BaseViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import org.koin.androidx.viewmodel.dsl.viewModel

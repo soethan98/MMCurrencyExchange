@@ -1,4 +1,4 @@
-package com.soethan.mmcurrencyexchange.util
+package com.soethan.mmcurrencyexchange.ui.base
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler

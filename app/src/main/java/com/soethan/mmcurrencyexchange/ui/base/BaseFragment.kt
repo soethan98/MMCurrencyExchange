@@ -8,32 +8,44 @@ import com.soethan.mmcurrencyexchange.R
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
-  
-    protected lateinit var binding: VB
-    protected abstract fun getViewBinding(): VB
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        init()
+    private var _binding: VB? = null// Binding variable to be used for accessing views.
+    protected val binding
+        get() = requireNotNull(_binding)
 
-    }
+    abstract fun setupViewBinding(
+        inflater: LayoutInflater, container: ViewGroup?
+    ): VB
 
-    private fun init() {
-        binding = getViewBinding()
+
+    final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onViewCreated(savedInstanceState)
         setUpToolbar()
     }
 
+    open fun onViewCreated(savedInstanceState: Bundle?) {}
 
-    override fun onCreateView(
+
+    final override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return binding.root
+        // Inflate the layout for this fragment
+        _binding = setupViewBinding(inflater, container)
+        return requireNotNull(_binding).root
     }
 
     abstract fun setUpToolbar()
+    open fun onClear() {}
 
+
+    final override fun onDestroyView() {
+        _binding = null
+        onClear()
+        super.onDestroyView()
+    }
 
 
 }

@@ -20,10 +20,12 @@ import kotlinx.coroutines.launch
 @FlowPreview
 class RateCalculatorFragment constructor(private val viewModel: RateCalculatorViewModel) :
     DialogFragment() {
-    private lateinit var args: RateCalculatorFragmentArgs
 
     private var _binding: FragmentRateCalculateDialogBinding? = null
     private val binding get() = _binding!!
+
+    private var textWatcher: TextWatcher? = null
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         dialog?.window?.attributes?.windowAnimations = R.style.DialogTransition
@@ -72,7 +74,6 @@ class RateCalculatorFragment constructor(private val viewModel: RateCalculatorVi
 
     }
 
-    private var textWatcher: TextWatcher? = null
 
     private fun setTextChangeListener() {
         textWatcher = binding.edtRate.addTextChangedListener {

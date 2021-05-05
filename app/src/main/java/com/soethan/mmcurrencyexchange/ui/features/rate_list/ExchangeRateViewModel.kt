@@ -1,14 +1,12 @@
  package com.soethan.mmcurrencyexchange.ui.features.rate_list
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.soethan.domain.usecase.GetExchangeRateList
 import com.soethan.mmcurrencyexchange.mapper.ExchangeRateUiModelMapper
 import com.soethan.mmcurrencyexchange.model.ExchangeUiModel
-import com.soethan.mmcurrencyexchange.util.BaseViewModel
+import com.soethan.mmcurrencyexchange.ui.base.BaseViewModel
 import com.soethan.mmcurrencyexchange.util.Resource
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 
 
