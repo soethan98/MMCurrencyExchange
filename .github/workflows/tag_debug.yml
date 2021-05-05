@@ -1,5 +1,5 @@
 # 1
-name: Simple Workflow Example
+name: Build Debug Apk
 # 2
 on: [push]
 
@@ -7,19 +7,22 @@ on: [push]
 jobs:
   build:
     # 4
-    name: Greet
+    name: Build and Upload apk
     # 5
     runs-on: ubuntu-latest
     # 6
     steps:
-      - name: Hello world step
-        run: echo Hello, World!
+      - name: Checkout
+        uses: actions/checkout@v2.3.2
+      - name: Setup JDK
+        uses: actions:setup-java@1.4.2
+        with:
+         java-version: 1.8
+      - name: Build Apk
+        run: ./gradlew assembleDebug
+      - name: Upload apk
+        uses: actions/upload-artifact@v2
+        with:
+         name: app
+         path: app/build/outputs/MMCurrencyExchange-debug.apk
 
-  time:
-    name: Print date
-    # 7
-    needs:
-      - build
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "It is $(date)"
