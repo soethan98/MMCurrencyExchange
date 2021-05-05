@@ -17,7 +17,8 @@ jobs:
       - name: Setup JDK
         uses: actions/setup-java@2
         with:
-         java-version: 1.8
+         distribution: 'adopt'
+         java-version: '11'
       - name: Build Apk
         run: ./gradlew assembleDebug
       - name: Upload apk
