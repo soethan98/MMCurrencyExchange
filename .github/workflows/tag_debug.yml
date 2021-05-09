@@ -28,4 +28,9 @@ jobs:
         with:
          name: app.apk
          path: app/build/outputs/apk/debug/MMCurrencyExchange-debug.apk
+      - name: Release asset
+        uses: softprops/action-gh-release@v1
+        with:
+          body: "A new release"
+          files: app/build/outputs/apk/debug/MMCurrencyExchange-debug.apk
 
