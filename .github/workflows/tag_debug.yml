@@ -2,9 +2,7 @@
 name: Build Debug Apk
 # 2
 on:
-  push:
-    branches:
-      - master
+  create:
     tags:
       - v*
 
