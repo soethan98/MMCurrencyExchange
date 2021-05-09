@@ -23,6 +23,6 @@ jobs:
       - name: Upload apk
         uses: actions/upload-artifact@v2
         with:
-         name: app
+         name: app.apk
          path: app/build/outputs/apk/debug/MMCurrencyExchange-debug.apk
 
