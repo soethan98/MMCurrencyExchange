@@ -15,5 +15,5 @@ val VIEW_MODEL_MODULE = module{
     viewModel { MainViewModel(get()) }
     viewModel { SettingsViewModel(get()) }
     viewModel{ ExchangeRateViewModel(get(), get()) }
-    viewModel{ RateCalculatorViewModel(get(),get()) }
+    viewModel{ RateCalculatorViewModel(get(),get(),get()) }
 }

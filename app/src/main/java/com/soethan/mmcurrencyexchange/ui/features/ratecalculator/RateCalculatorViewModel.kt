@@ -15,12 +15,12 @@ import kotlinx.coroutines.launch
 @ExperimentalCoroutinesApi
 class RateCalculatorViewModel constructor(
     private val getExchangeRateItem: GetExchangeRateItem,
-    private val rateCalculatorMapper: RateCalculatorMapper
+    private val rateCalculatorMapper: RateCalculatorMapper,
+    private val exchangeRateCalculator: ExchangeCalculator
 ) : BaseViewModel() {
 
 
     private lateinit var rateCalculatorUiModel: RateCalculatorUiModel
-    private var exchangeRateCalculator = ExchangeCalculator()
 
     private val _rateCalculatorLiveData = MutableLiveData<RateCalculatorUiModel>()
     val rateCaLiveData: LiveData<RateCalculatorUiModel>
@@ -42,9 +42,7 @@ class RateCalculatorViewModel constructor(
                 .map { return@map exchangeRateCalculator.calculate(it) }
                 .catch { e -> _throwableLiveData.postValue(e) }
                 .flowOn(Dispatchers.Main)
-                .collect {
-                    _rateCalculatorLiveData.postValue(it)
-                }
+                .collect()
         }
     }
 
@@ -57,43 +55,22 @@ class RateCalculatorViewModel constructor(
         }
     }
 
+    fun reverseCurrencyCode() {
+        viewModelScope.launch {
+            exchangeRateCalculator.reverseCalculationState()
+        }
+    }
+
+    fun getCalculationState() {
+        exchangeRateCalculator.rateCalculationStateFlow.onEach {
+            _rateCalculatorLiveData.postValue(it)
+        }.launchIn(viewModelScope)
+    }
+
+
     companion object {
         const val INITIAL_AMOUNT = "1.00"
     }
-
-//    private fun calculateValue(amount: String?): RateCalculatorUiModel {
-//        val rate = rateCalculatorUiModel.rate
-//        val calculatedAmount = BigDecimal(amount ?: INITIAL_AMOUNT).multiply(rate)
-//        return rateCalculatorUiModel.copy(calculatedAmount = calculatedAmount.toString())
-//    }
-
-//    private fun calculateValue(amount: String): RateCalculatorUiModel {
-//        val rate = rateCalculatorUiModel.rate
-//
-////        if (amount.isEmpty()) {
-////            return rateCalculatorUiModel.copy(
-////                calculatedAmount = rate.convertReadableFormat()
-////            )
-////        }
-//        return rateCalculatorUiModel.copy(
-//            calculatedAmount = (rate * amount).convertReadableFormat()
-//        )
-//    }
-
-//    fun postInitialValue() {
-//        _rateCalculatorLiveData.postValue(rateCalculatorUiModel)
-//    }
-
-
-//    fun setUpModel(code: String, rate: String) {
-//        rateCalculatorUiModel = RateCalculatorUiModel(
-//            code = code,
-//            rate = rate.getDecimalConvertedValue(),
-//            calculatedAmount = rate,
-//        )
-//        postInitialValue()
-//    }
-
 
 
 }

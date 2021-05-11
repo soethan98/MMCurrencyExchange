@@ -2,7 +2,11 @@ package com.soethan.mmcurrencyexchange.di
 
 import com.soethan.data.di.*
 import com.soethan.domain.di.USE_CASE_MODULE
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
+@FlowPreview
+@ExperimentalCoroutinesApi
 val APP_DI_MODULES = listOf(
 
     NET_MODULE,
@@ -14,5 +18,6 @@ val APP_DI_MODULES = listOf(
     FRAGMENT_MODULE,
     UI_MAPPER_MODULE,
     USE_CASE_MODULE,
-    PREF_MODULE
+    PREF_MODULE,
+    CALCULATOR_MODULE
 )

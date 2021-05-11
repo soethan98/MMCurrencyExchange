@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="@dimen/padding_common">
 
@@ -16,7 +17,7 @@
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="USD" />
+            tools:text="USD" />
 
         <EditText
             android:gravity="end"
@@ -33,15 +34,17 @@
             />
 
     </RelativeLayout>
+
     <ImageButton
-        android:layout_marginTop="@dimen/padding_common"
-        android:layout_marginBottom="@dimen/padding_common"
+        android:id="@+id/btnConvertCurrency"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/padding_common"
+        android:layout_marginBottom="@dimen/padding_common"
         android:background="@drawable/background_reverse"
         android:src="@drawable/ic_convert2"
-        android:tint="?colorOnSecondary"/>
+        android:tint="?colorOnSecondary" />
     <RelativeLayout
         android:background="@drawable/background_layout"
         android:padding="@dimen/padding_common"
