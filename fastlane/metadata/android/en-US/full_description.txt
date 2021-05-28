@@ -1,0 +1,4 @@
+Features included -
+  - View exchange rate from Central Bank Of Myanmar.
+  - Calculate rate between Myanmar kyats and other exchange.
+  - Dark Model Supported.
