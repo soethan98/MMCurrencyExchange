@@ -75,7 +75,7 @@ class ExchangeRateListFragment constructor(private val viewModel: ExchangeRateVi
                 }
                 is Resource.Content -> {
                     binding.progressExchangeList.hide()
-                    Timber.i("$TAG %s", it.content)
+//                    Timber.i("$TAG %s", it.content)
                     binding.itemUpdateTimeBanner.tvLastUpdateTime.text =
                         getString(R.string.last_updated_time, it.content.lastUpdateTime)
                     exchangeRateAdapter.submitList(it.content.exchangeRateUiModel)
@@ -103,7 +103,7 @@ class ExchangeRateListFragment constructor(private val viewModel: ExchangeRateVi
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_setting -> findNavController().navigate(R.id.toSettingsFragment)
+//            R.id.action_setting -> findNavController().navigate(R.id.toSettingsFragment)
         }
         return true
     }

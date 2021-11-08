@@ -33,7 +33,6 @@ class SettingsFragment constructor(private val viewModel: SettingsViewModel) :
             restartActivity()
 
         }
-        binding.btnBack.setOnClickListener { findNavController().navigateUp() }
     }
 
     override fun setUpToolbar() {

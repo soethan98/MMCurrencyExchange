@@ -6,8 +6,6 @@ import com.soethan.mmcurrencyexchange.model.ExchangeRateUiModel
 import com.soethan.mmcurrencyexchange.ui.base.adapter.BaseViewHolder
 import com.soethan.mmcurrencyexchange.ui.base.adapter.ClickListener
 import com.soethan.mmcurrencyexchange.util.getFlagIcon
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import timber.log.Timber
 
 class ExchangeRateViewHolder(private var binding: ItemExchangeRateBinding,private var clickListener: ClickListener<ExchangeRateUiModel>) :
     BaseViewHolder<ExchangeRateUiModel>(binding.root) {

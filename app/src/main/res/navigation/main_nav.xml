@@ -11,13 +11,6 @@
         android:label="Exchange Rates"
         tools:layout="@layout/fragment_exchange_rate_list" >
         <action
-            android:id="@+id/toSettingsFragment"
-            app:destination="@id/settingsFragment"
-            app:enterAnim="@anim/from_right"
-            app:exitAnim="@anim/to_left"
-            app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right"/>
-        <action
             android:id="@+id/action_exchangeRateListFragment_to_rateCalculatorFragment2"
             app:destination="@id/rateCalculatorFragment" />
     </fragment>
@@ -44,4 +37,9 @@
             android:name="id"
             app:argType="long" />
     </dialog>
+    <fragment
+        android:id="@+id/otherBankRateFragment"
+        android:name="com.soethan.mmcurrencyexchange.ui.features.rate_list.otherbanks.OtherBankRateFragment"
+        android:label="fragment_other_bank_rate"
+        tools:layout="@layout/fragment_other_bank_rate" />
 </navigation>

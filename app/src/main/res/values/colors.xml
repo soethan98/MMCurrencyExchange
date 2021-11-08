@@ -7,6 +7,9 @@
     <color name="primaryLightColor">#ffffff</color>
     <color name="primaryDarkColor">#c7c7c7</color>
 
+<!--    <color name="primaryColor">#E91E63</color>-->
+
+
     <color name="secondaryColor">#ff3d00</color>
     <color name="secondaryLightColor">#ff7539</color>
     <color name="secondaryDarkColor">#c30000</color>

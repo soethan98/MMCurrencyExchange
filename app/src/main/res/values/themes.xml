@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
         <item name="colorOnPrimary">@color/primaryTextColor</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondaryColor</item>
         <item name="colorSecondaryVariant">@color/secondaryLightColor</item>
@@ -12,8 +13,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+
+<!--        <item name="bottomNavigationStyle">@style/BottomNavigationViewTheme</item>-->
         <!-- Customize your theme here. -->
 
+    </style>
+
+    <style name="BottomNavigationViewTheme" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="colorPrimary">@color/secondaryColor</item>
     </style>
 
     <style name="DialogTransition">
@@ -21,4 +28,35 @@
         <item name="android:windowExitAnimation">@anim/to_right</item>
     </style>
 
+    <style name="viewParent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="viewParent.headerText">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline5</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+<!--    <style name="viewParent.headerText">-->
+<!--        <item name="android:textColor">@color/contentTextColor</item>-->
+<!--        <item name="android:textSize">@dimen/headerTextSize</item>-->
+<!--        <item name="android:textStyle">bold</item>-->
+<!--    </style>-->
+
+    <style name="viewParent.headerText.settingsMiniTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="settingsText" parent="viewParent.headerText.settingsMiniTitle">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">20dp</item>
+    </style>
+    <style name="viewParent.headerText.settingsTextIcon" parent="settingsText">
+        <item name="android:drawableRight">@drawable/ic_more</item>
+    </style>
 </resources>
