@@ -2,10 +2,19 @@ package com.soethan.domain.repo
 
 import com.soethan.domain.ExchangeModel
 import com.soethan.domain.RateItem
+import kotlinx.coroutines.flow.Flow
+import com.soethan.domain.util.Result
 
 
 interface ExchangeRepo {
-    suspend fun getCurrencies(forceRefresh: Boolean): ExchangeModel
+
+
+
+    suspend fun getCurrenciesFlow(
+        forceRefresh: Boolean,
+        onFetchFailed: (Throwable) -> Unit,
+        onFetchSuccess: () -> Unit
+    ): Flow<Result<ExchangeModel>>
 
     suspend fun getExchangeRate(id: Long): RateItem
 

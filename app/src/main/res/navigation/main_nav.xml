@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/splashScreenFragment">
+    app:startDestination="@id/exchangeRateListFragment">
 
     <fragment
         android:id="@+id/exchangeRateListFragment"
         android:name="com.soethan.mmcurrencyexchange.ui.features.rate_list.ExchangeRateListFragment"
         android:label="Exchange Rates"
-        tools:layout="@layout/fragment_exchange_rate_list" >
+        tools:layout="@layout/fragment_exchange_rate_list">
         <action
             android:id="@+id/action_exchangeRateListFragment_to_rateCalculatorFragment2"
             app:destination="@id/rateCalculatorFragment" />
@@ -20,18 +20,10 @@
         android:name="com.soethan.mmcurrencyexchange.ui.features.settings.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings" />
-    <fragment
-        android:id="@+id/splashScreenFragment"
-        android:name="com.soethan.mmcurrencyexchange.ui.features.splash.SplashScreenFragment"
-        android:label="SplashScreenFragment">
-        <action
-            android:id="@+id/toExchangeListFragment"
-            app:destination="@id/exchangeRateListFragment" />
-    </fragment>
     <dialog
         android:id="@+id/rateCalculatorFragment"
         android:name="com.soethan.mmcurrencyexchange.ui.features.ratecalculator.RateCalculatorFragment"
-        android:label="RateCalculatorFragment" >
+        android:label="RateCalculatorFragment">
 
         <argument
             android:name="id"

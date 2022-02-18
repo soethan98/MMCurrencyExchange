@@ -16,7 +16,7 @@ import com.soethan.mmcurrencyexchange.ui.base.BaseFragment
 import com.soethan.mmcurrencyexchange.util.extension.getApplicationVersionName
 import kotlinx.coroutines.delay
 
-class SplashScreenFragment() : BaseFragment<FragmentSplashScreenBinding>() {
+class SplashScreenFragment : BaseFragment<FragmentSplashScreenBinding>() {
 
     private var DURATION = 2000L
 

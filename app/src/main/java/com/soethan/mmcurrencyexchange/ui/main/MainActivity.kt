@@ -21,8 +21,10 @@ import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.KoinExperimentalAPI
 import timber.log.Timber
 
+@KoinExperimentalAPI
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModel()
@@ -40,13 +42,13 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.findNavController()
         mainBinding.navView.setupWithNavController(navController)
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.splashScreenFragment) {
-                mainBinding.navView.hide()
-            }else{
-                mainBinding.navView.show()
-            }
-        }
+//        navController.addOnDestinationChangedListener { _, destination, _ ->
+//            if (destination.id == R.id.splashScreenFragment) {
+//                mainBinding.navView.hide()
+//            }else{
+//                mainBinding.navView.show()
+//            }
+//        }
         observeData()
     }
 

@@ -14,7 +14,6 @@ keystoreProperties.load(new FileInputStream(keyStoreFile))
 
 android {
     compileSdkVersion BuildConfig.compileSdkVersion
-    buildToolsVersion BuildConfig.buildToolsVersion
 
     defaultConfig {
         applicationId "com.soethan.mmcurrencyexchange"
