@@ -119,14 +119,5 @@ class ExchangeRateListFragment constructor(private val viewModel: ExchangeRateVi
         (activity as? AppCompatActivity)?.setSupportActionBar(binding.toolbar)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.overflow_menu, menu)
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-//            R.id.action_setting -> findNavController().navigate(R.id.toSettingsFragment)
-        }
-        return true
-    }
 }

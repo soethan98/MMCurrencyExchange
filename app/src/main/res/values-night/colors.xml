@@ -3,10 +3,11 @@
     <color name="primaryColor">#212121</color>
     <color name="primaryLightColor">#484848</color>
     <color name="primaryDarkColor">#000000</color>
-
     <color name="secondaryColor">#ff3d00</color>
     <color name="secondaryLightColor">#ff7539</color>
     <color name="secondaryDarkColor">#c30000</color>
     <color name="primaryTextColor">#000000</color>
     <color name="secondaryTextColor">#fafafa</color>
+    <color name="navBarDefaultColor">#c7c7c7</color>
+
 </resources>

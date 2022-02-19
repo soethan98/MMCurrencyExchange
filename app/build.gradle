@@ -1,15 +1,14 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-        id 'kotlin-kapt'
-        id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 apply from: "$project.rootDir/system/artifacts.gradle"
 def keyStoreFile = rootProject.file("keystore.properties")
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keyStoreFile))
-
 
 
 android {
@@ -43,7 +42,7 @@ android {
 
         }
 
-        debug{
+        debug {
             debuggable true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -101,5 +100,6 @@ dependencies {
     implementation CommonLibs.timber
 
     implementation Gson.core
+    implementation SplashScreen.splash_core
 
 }
