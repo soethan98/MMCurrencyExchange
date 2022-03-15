@@ -1,10 +1,13 @@
 package com.soethan.data.repository
 
-import com.soethan.data.local.PrefStore
+import com.soethan.data.source.local.PrefStore
 import com.soethan.data.mapper.ExchangeRateDbMapper
 import com.soethan.data.mapper.ExchangeRateDomainMapper
 import com.soethan.data.model.CurrencyDataModel
-import com.soethan.data.network.model.CurrencyApiItem
+import com.soethan.data.source.local.ExchangeLocalDataSource
+import com.soethan.data.source.network.ExchangeRemoteDataSource
+import com.soethan.data.source.network.OtherBankScrapper
+import com.soethan.data.source.network.model.CurrencyApiItem
 import com.soethan.data.util.ConnectivityChecker
 import com.soethan.data.util.networkBoundResource
 import com.soethan.domain.ExchangeModel
@@ -17,7 +20,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import com.soethan.domain.util.Result
-import timber.log.Timber
 
 @ExperimentalCoroutinesApi
 class ExchangeRepoImpl(
@@ -26,44 +28,61 @@ class ExchangeRepoImpl(
     private val exchangeRateDomainMapper: ExchangeRateDomainMapper,
     private val exchangeRateDbMapper: ExchangeRateDbMapper,
     private val connectivityChecker: ConnectivityChecker,
-    private val prefStore: PrefStore
+    private val prefStore: PrefStore,
+    private val otherBankScrapper: OtherBankScrapper
 ) : ExchangeRepo {
 
+    override suspend fun getCbExchangeRate(): Flow<Result<ExchangeModel>> {
+        return networkBoundResource(query = {}, fetch = {
+            otherBankScrapper.scrapCurrencyList()
+        },
+            saveFetchResult = {
+                withContext(Dispatchers.IO) {
+                    exchangeLocalDataSource.saveOtherBankRate()
+                }
+            },
+            shouldFetch = { item -> true },
+            onFetchFailed = { t ->
+
+            })
+    }
 
     override suspend fun getCurrenciesFlow(
         forceRefresh: Boolean, onFetchFailed: (Throwable) -> Unit,
         onFetchSuccess: () -> Unit
     ): Flow<Result<ExchangeModel>> {
 
-        return networkBoundResource(query = {
-            val serverUpdateTime = prefStore.getServerUpdateTime().first()
-            val dbResult = exchangeLocalDataSource.getAllRatesFromDb()
-            dbResult.map {
-                exchangeRateDomainMapper.map(
-                    CurrencyDataModel(
-                        lastUpdateTime = serverUpdateTime,
-                        rateList = it
+        return networkBoundResource(
+            query = {
+                val serverUpdateTime = prefStore.getServerUpdateTime().first()
+                val dbResult = exchangeLocalDataSource.getAllRatesFromDb()
+                dbResult.map {
+                    exchangeRateDomainMapper.map(
+                        CurrencyDataModel(
+                            lastUpdateTime = serverUpdateTime,
+                            rateList = it
+                        )
                     )
-                )
-            }
-        }, fetch = {
-            exchangeRemoteDataSource.getExchangeFromNetwork()
+                }
+            },
+            fetch = {
+                exchangeRemoteDataSource.getExchangeFromNetwork()
 
-        }, saveFetchResult = {
-            withContext(Dispatchers.IO) {
-                prefStore.saveSyncTime(System.currentTimeMillis())
-                prefStore.saveServerUpdateTime(it.date)
-                synCurrency(it.getRates())
-            }
-        }, shouldFetch = { item ->
-            connectivityChecker.isNetworkAvailable() && checkValidTimeToFetchFromNetwork(
-                forceRefresh
-            )
-        }, onFetchFailed = onFetchFailed,
+            },
+            saveFetchResult = {
+                withContext(Dispatchers.IO) {
+                    prefStore.saveSyncTime(System.currentTimeMillis())
+                    prefStore.saveServerUpdateTime(it.date)
+                    synCurrency(it.getRates())
+                }
+            },
+            shouldFetch = { item ->
+                connectivityChecker.isNetworkAvailable() && checkValidTimeToFetchFromNetwork(
+                    forceRefresh
+                )
+            }, onFetchFailed = onFetchFailed,
             onFetchSuccess = onFetchSuccess
         )
-
-
     }
 
     private suspend fun synCurrency(updatedRates: List<CurrencyApiItem>) {
@@ -74,7 +93,6 @@ class ExchangeRepoImpl(
     override suspend fun getExchangeRate(id: Long): RateItem {
         return exchangeRateDomainMapper.mapRateItem(exchangeLocalDataSource.getExchangeRate(id))
     }
-
 
     private suspend fun checkValidTimeToFetchFromNetwork(refresh: Boolean): Boolean {
         val lastUpdateTime = prefStore.getServerSyncTime().first()

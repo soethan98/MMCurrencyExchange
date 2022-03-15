@@ -69,6 +69,8 @@ dependencies {
     implementation Gson.core
 
     implementation DataStore.android
+    implementation 'org.jsoup:jsoup:1.14.3'
+
 
 
 

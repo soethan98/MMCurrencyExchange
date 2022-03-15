@@ -8,8 +8,6 @@ import com.soethan.domain.util.Result
 
 interface ExchangeRepo {
 
-
-
     suspend fun getCurrenciesFlow(
         forceRefresh: Boolean,
         onFetchFailed: (Throwable) -> Unit,
@@ -17,5 +15,7 @@ interface ExchangeRepo {
     ): Flow<Result<ExchangeModel>>
 
     suspend fun getExchangeRate(id: Long): RateItem
+
+    //suspend fun getCbExchangeRate():Flow<Result<ExchangeModel>>
 
 }

@@ -1,11 +1,8 @@
 package com.soethan.data.mapper
 
 import com.soethan.data.model.RateEntity
-import com.soethan.data.network.model.CurrencyApiItem
-import timber.log.Timber
+import com.soethan.data.source.network.model.CurrencyApiItem
 import java.math.BigDecimal
-import java.text.NumberFormat
-import java.util.*
 
 class ExchangeRateDbMapper : BaseMapper<List<RateEntity>, List<CurrencyApiItem>>() {
     override fun map(e: List<CurrencyApiItem>): List<RateEntity> {

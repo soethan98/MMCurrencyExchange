@@ -1,6 +1,6 @@
-package com.soethan.data.network.service
+package com.soethan.data.source.network.service
 
-import com.soethan.data.network.model.CurrencyApiModel
+import com.soethan.data.source.network.model.CurrencyApiModel
 import retrofit2.http.GET
 
 

@@ -1,4 +1,4 @@
-package com.soethan.data.local
+package com.soethan.data.source.local
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -13,8 +13,8 @@ interface ExchangeRateDao {
     @Query("SELECT * FROM rate_table")
     fun getAllExchangeRates(): Flow<List<RateEntity>>
 
-//    @Query("SELECT * FROM rate_table WHERE id=:id")
-//    suspend fun getExchangeRate(id: Long): RateEntity
+    @Query("SELECT * FROM rate_table WHERE id=:id")
+    suspend fun getExchangeRate(id: Long): RateEntity
 
     @Insert
     suspend fun insertAll(rates: List<RateEntity>)

@@ -1,9 +1,7 @@
 package com.soethan.data.di
 
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.room.Room
-import com.soethan.data.local.ExchangeRateDatabase
+import com.soethan.data.source.local.ExchangeRateDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 

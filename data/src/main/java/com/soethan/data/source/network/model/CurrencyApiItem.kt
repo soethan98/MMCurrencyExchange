@@ -1,4 +1,4 @@
-package com.soethan.data.network.model
+package com.soethan.data.source.network.model
 
 data class CurrencyApiItem(
     val currencyCode: String,

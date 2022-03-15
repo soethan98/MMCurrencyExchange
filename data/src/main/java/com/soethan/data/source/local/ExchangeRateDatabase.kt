@@ -1,9 +1,9 @@
-package com.soethan.data.local
+package com.soethan.data.source.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.soethan.data.local.converter.BigDecimalTypeConverter
+import com.soethan.data.source.local.converter.BigDecimalTypeConverter
 import com.soethan.data.model.RateEntity
 
 @Database(
@@ -14,4 +14,5 @@ import com.soethan.data.model.RateEntity
 @TypeConverters(BigDecimalTypeConverter::class)
 abstract class ExchangeRateDatabase : RoomDatabase() {
     abstract fun exchangeRateDao(): ExchangeRateDao
+    abstract fun otherBanksExchangeRateDao(): OExchangeRateDao
 }

@@ -1,7 +1,7 @@
-package com.soethan.data.repository
+package com.soethan.data.source.network
 
-import com.soethan.data.network.model.CurrencyApiModel
-import com.soethan.data.network.service.ExchangeRateService
+import com.soethan.data.source.network.model.CurrencyApiModel
+import com.soethan.data.source.network.service.ExchangeRateService
 
 class ExchangeRemoteDataSourceImpl constructor(private val exchangeRateService: ExchangeRateService) :
     ExchangeRemoteDataSource {

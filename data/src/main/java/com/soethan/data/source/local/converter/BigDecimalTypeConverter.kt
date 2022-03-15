@@ -1,4 +1,4 @@
-package com.soethan.data.local.converter
+package com.soethan.data.source.local.converter
 
 import androidx.room.TypeConverter
 import java.math.BigDecimal
