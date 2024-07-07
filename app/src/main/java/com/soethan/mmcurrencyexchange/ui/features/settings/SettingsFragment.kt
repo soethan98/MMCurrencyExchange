@@ -14,7 +14,7 @@ import com.soethan.mmcurrencyexchange.util.extension.isNightMode
 import com.soethan.mmcurrencyexchange.util.extension.restartActivity
 
 
-class SettingsFragment constructor(private val viewModel: SettingsViewModel) :
+class SettingsFragment ( val viewModel: SettingsViewModel) :
     BaseFragment<FragmentSettingsBinding>() {
 
     override fun setupViewBinding(

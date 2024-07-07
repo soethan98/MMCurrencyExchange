@@ -14,7 +14,6 @@ keystoreProperties.load(new FileInputStream(keyStoreFile))
 
 android {
     compileSdkVersion BuildConfig.compileSdkVersion
-    buildToolsVersion BuildConfig.buildToolsVersion
 
     defaultConfig {
         applicationId "com.soethan.mmcurrencyexchange"
@@ -83,7 +82,7 @@ dependencies {
 
     implementation AndroidArchLifeCycle.viewmodel
     implementation AndroidArchLifeCycle.liveData
-    kapt AndroidArchLifeCycle.compiler
+    annotationProcessor AndroidArchLifeCycle.compiler
 
     implementation AndroidArchNavigation.fragment
     implementation AndroidArchNavigation.ui
@@ -93,10 +92,11 @@ dependencies {
     implementation Coroutines.coroutine_rx
 
     implementation Koin.android
-    implementation Koin.extension
-    implementation Koin.viewmodel
-    implementation Koin.fragment
-    implementation Koin.scope
+    implementation Koin.core
+//    implementation Koin.extension
+//    implementation Koin.viewmodel
+//    implementation Koin.fragment
+//    implementation Koin.scope
 
 
     implementation CommonLibs.timber

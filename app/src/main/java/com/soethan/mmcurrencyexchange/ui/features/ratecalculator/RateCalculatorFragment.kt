@@ -21,7 +21,7 @@ import java.util.*
 
 @ExperimentalCoroutinesApi
 @FlowPreview
-class RateCalculatorFragment constructor(private val viewModel: RateCalculatorViewModel) :
+class RateCalculatorFragment( val viewModel: RateCalculatorViewModel) :
     DialogFragment() {
 
     private var _binding: FragmentRateCalculateDialogBinding? = null

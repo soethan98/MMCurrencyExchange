@@ -10,7 +10,7 @@ import org.koin.dsl.module
 private const val DATABASE_NAME = "ExchangeRateDatabase"
 
 val DB_MODULE = module {
-    single {
+    single<ExchangeRateDatabase> {
         Room.databaseBuilder(androidContext(), ExchangeRateDatabase::class.java, DATABASE_NAME)
             .fallbackToDestructiveMigration().build()
     }

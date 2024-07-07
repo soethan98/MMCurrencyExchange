@@ -18,7 +18,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class ExchangeRateListFragment constructor(private val viewModel: ExchangeRateViewModel) :
+class ExchangeRateListFragment (val viewModel: ExchangeRateViewModel) :
     BaseFragment<FragmentExchangeRateListBinding>() {
 
 

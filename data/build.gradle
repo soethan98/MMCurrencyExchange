@@ -5,12 +5,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdkVersion BuildConfig.compileSdkVersion
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion BuildConfig.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -50,10 +49,9 @@ dependencies {
     implementation Coroutines.coroutine_rx
 
     implementation Koin.android
-    implementation Koin.extension
-    implementation Koin.viewmodel
-    implementation Koin.fragment
-    implementation Koin.scope
+    implementation Koin.core
+
+
 
     implementation AndroidArchRoom.ktx
     implementation AndroidArchRoom.runtime

@@ -3,10 +3,10 @@ import java.net.URI
 
 object BuildConfig {
 
-    const val compileSdkVersion = 30
+    const val compileSdkVersion = 33
     const val buildToolsVersion = "30.0.2"
     const val minSdkVersion = 21
-    const val targetSdkVersion = 30
+    const val targetSdkVersion = 33
 
     private const val versionMajor = 1
     private const val versionMinor = 0
@@ -22,8 +22,8 @@ object BuildConfig {
 
 
 object CommonLibs {
-    private const val kotlin = "1.4.21"
-    private const val gradlePluginVer = "4.1.0"
+    private const val kotlin = "1.8.20"
+    private const val gradlePluginVer = "7.3.0"
 
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin}"
     const val gradlePlugin = "com.android.tools.build:gradle:$gradlePluginVer"
@@ -88,7 +88,7 @@ object AndroidArchNavigation {
 }
 
 object AndroidArchRoom {
-    private const val room_version = "2.2.6"
+    private const val room_version = "2.5.2"
     const val runtime = "androidx.room:room-runtime:$room_version"
     const val compiler = "androidx.room:room-compiler:$room_version"
     const val ktx = "androidx.room:room-ktx:$room_version"
@@ -102,12 +102,13 @@ object AndroidX {
 }
 
 object Koin {
-    private const val version = "2.2.2"
-    const val android = "org.koin:koin-android:$version"
-    const val scope = "org.koin:koin-androidx-scope:$version"
-    const val viewmodel = "org.koin:koin-androidx-viewmodel:$version"
-    const val fragment = "org.koin:koin-androidx-fragment:$version"
-    const val extension = "org.koin:koin-androidx-ext:$version"
+    private const val version = "3.5.6"
+    const val android = "io.insert-koin:koin-android:$version"
+    const val core = "io.insert-koin:koin-core:$version"
+//    const val scope = "org.koin:koin-androidx-scope:$version"
+//    const val viewmodel = "org.koin:koin-androidx-viewmodel:$version"
+//    const val fragment = "org.koin:koin-androidx-fragment:$version"
+//    const val extension = "org.koin:koin-androidx-ext:$version"
 
 }
 

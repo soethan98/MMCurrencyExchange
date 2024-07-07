@@ -15,7 +15,7 @@ dependencies {
     implementation Coroutines.coroutine_core
     implementation Coroutines.coroutine_rx
 
-    implementation Koin.android
+    implementation Koin.core
 //    implementation Koin.extension
 //    implementation Koin.viewmodel
 //    implementation Koin.fragment
